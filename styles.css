@@ -1,0 +1,466 @@
+/* Reset básico e importação de fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Almendra:wght@400;700&display=swap');
+
+/* Variáveis do tema */
+:root {
+    --elden-black: #0a0803;
+    --elden-dark: #1c1510;
+    --elden-brown: #2f261b;
+    --elden-gold: #e6c547;
+    --elden-gold-light: #f5d762;
+    --elden-gold-dark: #c9a832;
+    --elden-red: #9d1c1c;
+    --elden-gray: #524d44;
+    --elden-text: #f2e6c9;
+    --elden-text-dim: #b5a285;
+    --elden-shadow: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilo base do body */
+body {
+    background: var(--elden-black);
+    color: var(--elden-text);
+    font-family: 'Cinzel', serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(230, 197, 71, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, rgba(157, 28, 28, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(47, 38, 27, 0.4) 0%, transparent 60%);
+    background-attachment: fixed;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Cabeçalho e Títulos */
+header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Fonte responsiva */
+    font-weight: 700;
+    color: var(--elden-gold);
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: glow-pulse 3s ease-in-out infinite;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem); /* Fonte responsiva */
+    font-weight: 600;
+    color: var(--elden-text);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px var(--elden-shadow);
+    letter-spacing: 2px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem;
+    color: var(--elden-gold);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px var(--elden-shadow);
+}
+
+/* Seções */
+.section {
+    background: linear-gradient(135deg, var(--elden-dark) 0%, var(--elden-brown) 100%);
+    border: 2px solid var(--elden-gold-dark);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow:
+        0 0 20px rgba(230, 197, 71, 0.3),
+        inset 0 1px 0 rgba(230, 197, 71, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* --- ESTILOS DO FORMULÁRIO --- */
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Permite que os campos quebrem a linha em telas menores */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    flex: 1; /* Faz os grupos de formulário dividirem o espaço igualmente */
+    min-width: 250px; /* Garante um tamanho mínimo antes de quebrar a linha */
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--elden-gold);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px var(--elden-shadow);
+}
+
+input, select {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--elden-gray);
+    border: 2px solid var(--elden-gray);
+    color: var(--elden-text);
+    border-radius: 8px;
+    font-family: 'Almendra', serif;
+    font-size: 1.1rem; /* Aumentado para melhor legibilidade */
+    transition: all 0.3s ease;
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 1px 0 rgba(230, 197, 71, 0.1);
+    appearance: none; /* Remove a aparência padrão do sistema */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Estilo customizado para a seta do select */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e6c547' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem; /* Espaço extra para a seta */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--elden-gold);
+    background: var(--elden-dark);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 0 3px rgba(230, 197, 71, 0.3),
+        0 0 15px rgba(230, 197, 71, 0.2);
+}
+
+/* Remove as setas de input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* --- BOTÕES --- */
+.btn {
+    background-color: var(--elden-dark);
+    border: 2px solid var(--elden-gold);
+    color: var(--elden-text);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 25px rgba(230, 197, 71, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: var(--elden-gold-dark);
+    color: var(--elden-black);
+}
+
+.btn-primary {
+    background-color: var(--elden-gold-dark);
+    color: var(--elden-black);
+}
+.btn-primary:hover {
+    background-color: var(--elden-gold);
+}
+
+.btn-danger {
+    border-color: var(--elden-red);
+    color: var(--elden-red);
+}
+.btn-danger:hover {
+    background-color: var(--elden-red);
+    color: var(--elden-text);
+}
+
+/* Botões do formulário não precisam ter 100% de largura */
+.form-actions .btn {
+    min-width: 150px;
+}
+
+
+/* --- DASHBOARD E LISTA DE PERSONAGENS --- */
+.user-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.user-menu h3 {
+    font-size: 1.5rem;
+    color: var(--elden-gold-light);
+}
+
+.characters-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.character-card {
+    background: linear-gradient(135deg, var(--elden-dark) 0%, var(--elden-brown) 100%);
+    border: 2px solid var(--elden-gold-dark);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(230, 197, 71, 0.5);
+}
+
+.character-card h3 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--elden-gold);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.character-card .character-info {
+    font-family: 'Almendra', serif;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--elden-gray);
+}
+.character-card .character-info span {
+    color: var(--elden-text-dim);
+}
+
+.character-card .character-extra {
+    font-size: 0.8rem;
+    color: var(--elden-text-dim);
+    margin-top: auto; /* Empurra para o final do card */
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.empty-characters {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--elden-text-dim);
+    grid-column: 1 / -1; /* Ocupa todas as colunas do grid */
+}
+
+/* --- PÁGINA DE CRIAÇÃO --- */
+
+.character-preview {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--elden-gray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Build selection */
+#build-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.build-btn {
+    background: var(--elden-dark);
+    border: 1px solid var(--elden-gray);
+    color: var(--elden-text);
+    padding: 1rem;
+    text-align: left;
+    width: 100%;
+}
+.build-btn:hover {
+    border-color: var(--elden-gold);
+    background: var(--elden-brown);
+    color: var(--elden-text);
+}
+.build-btn.selected {
+    border-color: var(--elden-gold);
+    background: var(--elden-gold-dark);
+    color: var(--elden-black);
+    box-shadow: 0 0 15px rgba(230, 197, 71, 0.5);
+}
+
+.build-btn-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--elden-gold-light);
+}
+.build-btn.selected .build-btn-title {
+    color: var(--elden-black);
+}
+
+.build-btn-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Stats grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.stat-box {
+    background: var(--elden-dark);
+    border: 1px solid var(--elden-gray);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+.stat-name {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--elden-gold);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.stat-modifier {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--elden-text-dim);
+}
+
+
+/* --- MODAL, TOAST E UTILITÁRIOS --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+.modal-content {
+    background: var(--elden-dark);
+    border: 2px solid var(--elden-gold);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+.modal-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--elden-gold-dark);
+    color: var(--elden-black);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    z-index: 1001;
+    font-weight: 600;
+}
+.toast.error {
+    background: var(--elden-red);
+    color: var(--elden-text);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 10px var(--elden-gold), 2px 2px 8px var(--elden-shadow); }
+    50% { text-shadow: 0 0 25px var(--elden-gold), 2px 2px 8px var(--elden-shadow); }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    .section {
+        padding: 1.5rem;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .user-menu {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+}
