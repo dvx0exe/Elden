@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reinos Indomáveis - Criador de Personagens</title>
+    <meta name="description" content="Crie e gerencie personagens para o mundo dos Reinos Indomáveis" />
+    <meta name="author" content="Reinos Indomáveis" />
+
+    <meta property="og:title" content="Reinos Indomáveis - Criador de Personagens" />
+    <meta property="og:description" content="Crie e gerencie personagens para o mundo dos Reinos Indomáveis" />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Reinos Indomáveis</h1>
+            <h2 class="subtitle">Criador de Personagens</h2>
+        </header>
+
+        <section id="dashboard-section" class="section">
+            <div class="user-menu">
+                <h3 class="content">Criador de Personagens</h3>
+                <div class="button-group">
+                    <button id="create-character-btn" class="btn btn-primary">Criar Personagem</button>
+                </div>
+            </div>
+            <div id="characters-list" class="characters-list"></div>
+        </section>
+
+        <section id="create-character-section" class="section hidden">
+            <h2 class="section-title">Criar Novo Personagem</h2>
+            <div class="content">
+                <form id="character-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="character-name">Nome:</label>
+                            <input type="text" id="character-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="character-age">Idade:</label>
+                            <input type="number" id="character-age" min="1" max="1000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="character-race">Raça:</label>
+                            <select id="character-race" required>
+                                <option value="" disabled selected>Escolha uma raça</option>
+                                <option value="Humano">Humano</option>
+                                <option value="Elfo">Elfo</option>
+                                <option value="Anão">Anão</option>
+                                <option value="Orc">Orc</option>
+                                <option value="Gato">Gato</option>
+                                <option value="Lagarto">Lagarto</option>
+                                <option value="Dragão">Dragão</option>
+                                <option value="Cyborgue">Cyborgue</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="character-sex">Sexo:</label>
+                            <select id="character-sex" required>
+                                <option value="" disabled selected>Escolha o sexo</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="character-class">Classe:</label>
+                        <select id="character-class" required>
+                            <option value="" disabled selected>Escolher uma classe</option>
+                            <option value="Heroi">Herói</option>
+                            <option value="Bandido">Bandido</option>
+                            <option value="Astrologo">Astrólogo</option>
+                            <option value="Guerreiro">Guerreiro</option>
+                            <option value="Prisioneiro">Prisioneiro</option>
+                            <option value="Confessor">Confessor</option>
+                            <option value="Miseravel">Miserável</option>
+                            <option value="Vagabundo">Vagabundo</option>
+                            <option value="Profeta">Profeta</option>
+                            <option value="Samurai">Samurai</option>
+                        </select>
+                    </div>
+
+                    <div id="build-options" class="form-group hidden">
+                        <h3 class="subtitle">Builds Disponíveis</h3>
+                        <div id="build-buttons"></div>
+                        <input type="hidden" id="character-build" required>
+                    </div>
+
+                    <div class="character-preview">
+                        <h3 class="subtitle">Preview do Personagem</h3>
+                        <div id="character-stats" class="stats-grid"></div>
+                    </div>
+                </form>
+
+                <div class="form-actions">
+                    <button type="button" id="back-btn" class="btn btn-secondary">Voltar</button>
+                    <button type="submit" form="character-form" class="btn btn-primary">Criar Personagem</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-character-section" class="section hidden">
+            <h2 id="character-view-title" class="section-title">Detalhes do Personagem</h2>
+            <div id="character-details" class="character-details"></div>
+            <div class="form-actions">
+                <button id="view-back-btn" class="btn btn-secondary">Voltar</button>
+                <button id="delete-character-btn" class="btn btn-danger">Excluir</button>
+            </div>
+        </section>
+        
+        <div id="delete-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3 class="modal-title">Excluir Personagem</h3>
+                <p class="modal-text">Tem certeza que deseja excluir este personagem? Esta ação não pode ser desfeita.</p>
+                <div class="modal-actions">
+                    <button id="modal-cancel" class="btn btn-secondary">Cancelar</button>
+                    <button id="modal-confirm" class="btn btn-danger">Confirmar Exclusão</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast" class="toast hidden"></div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
